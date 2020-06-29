@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="Status report of Thorinair's Lunar Infrastructure." />
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png" />
+
+	<title>Lunar Infrastructure Status</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="../android-touch-icon.png">
+
+    <meta property="og:title" content="Lunar Infrastructure Status">
+    <meta property="og:description" content="Status report of Thorinair's Lunar Infrastructure.">
+    <meta property="og:image" content="https://status.thorinair.net/img/favicon.png">
+    <meta name="twitter:card" content="summary">
+
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/dash.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="navbar-wrapper">
+		<div class="container">
+
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+                        <a class="navbar-brand" href="../">Lunar Infrastructure Status</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+		</div>
+    </div>
+
+    <div class="dashboard">
+		<div class="box">
+			<h3>Princess Luna</h3>
+			<h4>Central control system</h4>
+			<ul>
+				<li>
+					<div class="name"><p class="unknown" id="name_luna_status">Status Monitoring</p></div>
+					<div class="time"><p class="unknown" id="time_luna_status">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_luna_local">API (Local)</p></div>
+					<div class="time"><p class="unknown" id="time_luna_local">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_luna_public">API (Public)</p></div>
+					<div class="time"><p class="unknown" id="time_luna_public">Unknown</p></div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="box">
+			<h3>Queen Chrysalis</h3>
+			<h4>File hosting, neural networks, Minecraft servers</h4>
+			<ul>
+				<li>
+					<div class="name"><p class="unknown" id="name_chrysalis_file_local">File Hosting (Local)</p></div>
+					<div class="time"><p class="unknown" id="time_chrysalis_file_local">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_chrysalis_file_public">File Hosting (Public)</p></div>
+					<div class="time"><p class="unknown" id="time_chrysalis_file_public">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_chrysalis_stream_local">Streaming (Local)</p></div>
+					<div class="time"><p class="unknown" id="time_chrysalis_stream_local">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_chrysalis_stream_public">Streaming (Public)</p></div>
+					<div class="time"><p class="unknown" id="time_chrysalis_stream_public">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_chrysalis_ann">Neural Networks</p></div>
+					<div class="time"><p class="unknown" id="time_chrysalis_ann">Unknown</p></div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="box">
+			<h3>Sensor System</h3>
+			<h4>Atmospheric, geologic, radiation and GPS data</h4>
+			<ul>
+				<li>
+					<div class="name"><p class="unknown" id="name_varipass">VariPass</p></div>
+					<div class="time"><p class="unknown" id="time_varipass">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_celly">Celly</p></div>
+					<div class="time"><p class="unknown" id="time_celly">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_chryssy">Chryssy</p></div>
+					<div class="time"><p class="unknown" id="time_chryssy">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_dashie">Dashie</p></div>
+					<div class="time"><p class="unknown" id="time_dashie">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_twilight">Twilight Sparkle</p></div>
+					<div class="time"><p class="unknown" id="time_twilight">Unknown</p></div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="box">
+			<h3>3D Printing</h3>
+			<h4>Printer, spool monitoring</h4>
+			<ul>
+				<li>
+					<div class="name"><p class="unknown" id="name_rarity_local">Nightmare Rarity (Local)</p></div>
+					<div class="time"><p class="unknown" id="time_rarity_local">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_rarity_public">Nightmare Rarity (Public)</p></div>
+					<div class="time"><p class="unknown" id="time_rarity_public">Unknown</p></div>
+				</li>
+                <li>
+                    <div class="name"><p class="unknown" id="name_raritush">RariTUSH</p></div>
+                    <div class="time"><p class="unknown" id="time_raritush">Unknown</p></div>
+                </li>
+			</ul>
+		</div>
+
+		<div class="box">
+			<h3>Tantabus</h3>
+			<h4>Surveillance</h4>
+			<ul>
+				<li>
+					<div class="name"><p class="unknown" id="name_tantabus_local">Surveillance (Local)</p></div>
+					<div class="time"><p class="unknown" id="time_tantabus_local">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_tantabus_public">Surveillance (Public)</p></div>
+					<div class="time"><p class="unknown" id="time_tantabus_public">Unknown</p></div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="box">
+			<h3>Misc. Devices</h3>
+			<h4>Light bulbs, EEG data, power data</h4>
+			<ul>
+				<li>
+					<div class="name"><p class="unknown" id="name_tradfri">Tradfri</p></div>
+					<div class="time"><p class="unknown" id="time_tradfri">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_lulu">Lulu</p></div>
+					<div class="time"><p class="unknown" id="time_lulu">Unknown</p></div>
+				</li>
+				<li>
+					<div class="name"><p class="unknown" id="name_sparkle">Sparkle</p></div>
+					<div class="time"><p class="unknown" id="time_sparkle">Unknown</p></div>
+				</li>
+                <li>
+                    <div class="name"><p class="unknown" id="name_exclaml">ExclamL</p></div>
+                    <div class="time"><p class="unknown" id="time_exclaml">Unknown</p></div>
+                </li>
+                <li>
+                    <div class="name"><p class="unknown" id="name_obs">OBS</p></div>
+                    <div class="time"><p class="unknown" id="time_obs">Unknown</p></div>
+                </li>
+			</ul>
+		</div>
+
+    </div>
+
+    <footer>
+        <p>Lunar Infrastructure and Status website engineered and designed by Thorinair.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>init();</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>

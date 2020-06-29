@@ -1,0 +1,2 @@
+# Lunar Infrastructure Status
+Lunar Infrastructure Status (https://status.thorinair.net/) is a simple website designed to display the complete status of Thorinair's infrastructure of devices, services and websites. The data is pushed to the database by [Princess Luna](https://github.com/Thorinair/Princess-Luna) and then parsed and displayed here.
