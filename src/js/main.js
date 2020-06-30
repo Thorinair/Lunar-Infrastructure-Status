@@ -1,15 +1,20 @@
 var config = {
 	"loop": 1000,
 	"offline": {
-		"luna_status": 30,
+		"luna_status": 20,
 		"luna_local":  120,
 		"luna_public": 120,
 
-		"chrysalis_file_local":    120,
-		"chrysalis_file_public":   120,
-		"chrysalis_stream_local":  120,
-		"chrysalis_stream_public": 120,
-		"chrysalis_ann":           120,
+		"chrysalis_file_local":     120,
+		"chrysalis_file_public":    120,
+		"chrysalis_icecast_local":  120,
+		"chrysalis_icecast_public": 120,
+		"chrysalis_ann":            120,
+
+        "pvfm":           20,
+        "overlay_np":     10,
+        "overlay_lyrics": 10,
+        "exclaml":        10,
 
 		"rarity_local":  120,
 		"rarity_public": 120,
@@ -25,10 +30,8 @@ var config = {
 		"twilight": 1800,
 
 		"tradfri": 120,
-		"lulu":    5,
-		"sparkle": 600,
-        "exclaml": 60,
-        "obs": 60
+        "sparkle": 600,
+		"lulu":    5
 	}
 }
 
@@ -84,8 +87,26 @@ function fetchStatus(callback) {
 
 function loopStatus() {
 	
-	fetchStatus(function (r) {
-		var list = r.data.split(",");
+	fetchStatus(function (r) {        
+        var statusLuna = "offline";
+        var t = parseInt(r.age);
+        if (t <= config.offline.luna_status)
+            statusLuna = "online";
+
+        var diff = t;
+        var time = {};
+        time.seconds = Math.floor(diff % 60);
+        diff = Math.floor(diff / 60);
+        time.minutes = Math.floor(diff % 60);
+        diff = Math.floor(diff / 60);
+        time.hours = Math.floor(diff % 24);
+        time.days = Math.floor(diff / 24);
+
+        document.getElementById("time_luna_status").innerHTML = getTimeStringSimple(time);
+        document.getElementById("time_luna_status").className = statusLuna;
+        document.getElementById("name_luna_status").className = statusLuna;
+
+        var list = r.data.split(",");
 		list.forEach(function(l, i) {
 			var parts = l.split(":");
 			if (config.offline[parts[0]] != undefined) {
@@ -114,31 +135,16 @@ function loopStatus() {
 					document.getElementById("time_" + parts[0]).innerHTML = "Unknown";
 				}
 		     
-				document.getElementById("time_" + parts[0]).className = status;
-				document.getElementById("name_" + parts[0]).className = status;
+                if (statusLuna == "online") {
+    				document.getElementById("time_" + parts[0]).className = status;
+    				document.getElementById("name_" + parts[0]).className = status;
+                }
+                else {
+                    document.getElementById("time_" + parts[0]).className = "unknown";
+                    document.getElementById("name_" + parts[0]).className = "unknown";
+                }
 			}
 		});
-
-		var status = "offline";
-		var t = parseInt(r.age);
-		if (t <= config.offline.luna_status)
-			status = "online";
-
-        var diff = t;
-        var time = {};
-        time.seconds = Math.floor(diff % 60);
-        diff = Math.floor(diff / 60);
-        time.minutes = Math.floor(diff % 60);
-        diff = Math.floor(diff / 60);
-        time.hours = Math.floor(diff % 24);
-        time.days = Math.floor(diff / 24);
-
-		document.getElementById("time_luna_status").innerHTML = getTimeStringSimple(time);
-		document.getElementById("time_luna_status").className = status;
-		document.getElementById("name_luna_status").className = status;
-
-
-
 	});
 
 	window.setTimeout(function() {
