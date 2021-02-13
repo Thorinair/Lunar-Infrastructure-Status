@@ -18,7 +18,7 @@ var config = {
 
 		"rarity_local":  120,
 		"rarity_public": 120,
-        "raritush": 60,
+        "raritush":      120,
 
 		"tantabus_local":  120,
 		"tantabus_public": 120,
@@ -31,6 +31,7 @@ var config = {
 
 		"tradfri": 120,
         "sparkle": 600,
+        "maud":    5,
 		"lulu":    5
 	}
 }
