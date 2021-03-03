@@ -18,6 +18,7 @@ var config = {
 
 		"rarity_local":  120,
 		"rarity_public": 120,
+        "fluttershy":    120,
         "raritush":      120,
 
 		"tantabus_local":  120,
