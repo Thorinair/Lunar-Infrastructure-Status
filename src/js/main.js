@@ -28,6 +28,7 @@ var config = {
 		"celly":    180,
 		"chryssy":  180,
 		"dashie":   180,
+        "unicorn":  240,
 		"twilight": 1800,
 
 		"tradfri": 120,
